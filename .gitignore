@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+
+# Cursor
+.cursor/
+
+# Data (keep folders via .gitkeep, ignore contents)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Outputs (keep folders via .gitkeep, ignore contents)
+outputs/checkpoints/*
+outputs/samples/*
+outputs/metrics/*
+outputs/logs/*
+!outputs/checkpoints/.gitkeep
+!outputs/samples/.gitkeep
+!outputs/metrics/.gitkeep
+!outputs/logs/.gitkeep
