@@ -44,6 +44,12 @@ Add new dependencies with `uv add <package>` (do not use bare `pip`).
 ### Configuration
 Training/model hyperparameters live in [`configs/tiny_transformer.yaml`](configs/tiny_transformer.yaml).
 
+### Data
+The final model will be trained on public-domain text from Project Gutenberg. A tiny
+committed sample, [`data/raw/sample_corpus.txt`](data/raw/sample_corpus.txt), is
+included only for smoke tests so the pipeline can be run end-to-end quickly. See
+[`docs/data_source.md`](docs/data_source.md) for details.
+
 ## Status
 Project scaffolding and dependencies are set up, with the configuration file in
 place. The tokenizer, model, and training loop are **not implemented yet**.

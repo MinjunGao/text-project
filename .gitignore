@@ -33,6 +33,8 @@ data/raw/*
 data/processed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
+# Exception: tiny smoke-test corpus is committed
+!data/raw/sample_corpus.txt
 
 # Outputs (keep folders via .gitkeep, ignore contents)
 outputs/checkpoints/*
