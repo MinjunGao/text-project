@@ -1,13 +1,29 @@
 # Python
 __pycache__/
 *.py[cod]
+*.egg-info/
+build/
+dist/
 .venv/
 venv/
 env/
 .ipynb_checkpoints/
 
+# Caches / tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
 # OS / editor
 .DS_Store
+
+# Model artifacts (anywhere)
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.log
 
 # Cursor
 .cursor/

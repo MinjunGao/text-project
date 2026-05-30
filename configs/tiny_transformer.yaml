@@ -1,0 +1,37 @@
+# Tiny character-level Transformer (decoder-only GPT) configuration.
+# Reasonable small defaults for training reliably on modest hardware.
+# Nothing here is implemented yet; this file just holds the hyperparameters.
+
+# Reproducibility
+seed: 42
+
+# Data
+train_split: 0.9          # fraction of data used for training (rest is validation)
+
+# Training
+batch_size: 64            # sequences per batch
+block_size: 128           # context length (characters) the model sees at once
+max_iters: 3000           # total training iterations
+learning_rate: 0.0003     # AdamW learning rate
+dropout: 0.2              # dropout probability
+
+# Model architecture
+n_embd: 128               # embedding / hidden dimension
+n_head: 4                 # number of attention heads
+n_layer: 4                # number of Transformer blocks
+
+# Evaluation
+eval_interval: 300        # iterations between train/val loss evaluations
+eval_iters: 100           # batches averaged per evaluation
+
+# Checkpointing & sampling cadence (MLOps)
+checkpoint_interval: 500  # iterations between saved checkpoints
+sample_interval: 500      # iterations between generated text samples
+
+# Generation defaults
+max_new_tokens: 400       # characters to generate per sample
+temperature: 0.8          # sampling temperature (lower = more conservative)
+top_k: 40                 # restrict sampling to the top-k most likely characters
+
+# Hardware
+device: auto              # "auto" -> cuda if available, else mps, else cpu

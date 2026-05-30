@@ -13,6 +13,37 @@ from scratch.
 
 See [`docs/project_plan.md`](docs/project_plan.md) for the full plan.
 
+## Setup
+
+This project uses [`uv`](https://docs.astral.sh/uv/) for environment and dependency
+management. Install `uv` first (see the uv docs), then:
+
+```bash
+# Create the virtual environment (pinned to Python 3.12 via .python-version)
+uv venv
+
+# Install project dependencies from pyproject.toml / uv.lock
+uv sync
+```
+
+Run any command inside the environment with `uv run`, for example:
+
+```bash
+uv run python -c "import torch; print(torch.__version__)"
+```
+
+Add new dependencies with `uv add <package>` (do not use bare `pip`).
+
+### Dependencies
+- `torch` — model and training (from scratch, no pretrained weights)
+- `numpy` — array utilities
+- `pyyaml` — load configs (e.g. `configs/tiny_transformer.yaml`)
+- `matplotlib` — loss curves / plots
+- `streamlit` — chatbot GUI
+
+### Configuration
+Training/model hyperparameters live in [`configs/tiny_transformer.yaml`](configs/tiny_transformer.yaml).
+
 ## Status
-Step 1: project scaffolding (rules, plan, README, folder structure). The model and
-training are not implemented yet.
+Project scaffolding and dependencies are set up, with the configuration file in
+place. The tokenizer, model, and training loop are **not implemented yet**.
