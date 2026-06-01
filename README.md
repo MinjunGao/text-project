@@ -77,6 +77,13 @@ uv run python scripts/prepare_corpus.py \
 This normalizes line endings and removes excessive whitespace. The output lands in
 `data/processed/corpus.txt` (gitignored).
 
+### Tokenizer
+A simple character-level tokenizer lives in
+[`src/tokenizer.py`](src/tokenizer.py). `CharTokenizer` builds a deterministic,
+sorted character vocabulary from the training text (`fit`), converts between text
+and integer ids (`encode` / `decode`), persists to JSON (`save` / `load`), and
+maps unseen characters to an `<unk>` id.
+
 ## Testing
 Run the lightweight tests with:
 
