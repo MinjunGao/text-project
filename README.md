@@ -50,6 +50,25 @@ committed sample, [`data/raw/sample_corpus.txt`](data/raw/sample_corpus.txt), is
 included only for smoke tests so the pipeline can be run end-to-end quickly. See
 [`docs/data_source.md`](docs/data_source.md) for details.
 
+### Prepare the corpus
+Concatenate and clean the raw `.txt` files in `data/raw/` into a single corpus:
+
+```bash
+uv run python scripts/prepare_corpus.py \
+    --input_dir data/raw \
+    --output_path data/processed/corpus.txt
+```
+
+This normalizes line endings and removes excessive whitespace. The output lands in
+`data/processed/corpus.txt` (gitignored).
+
+## Testing
+Run the lightweight tests with:
+
+```bash
+uv run pytest
+```
+
 ## Status
 Project scaffolding and dependencies are set up, with the configuration file in
 place. The tokenizer, model, and training loop are **not implemented yet**.
