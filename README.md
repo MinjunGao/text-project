@@ -50,6 +50,21 @@ committed sample, [`data/raw/sample_corpus.txt`](data/raw/sample_corpus.txt), is
 included only for smoke tests so the pipeline can be run end-to-end quickly. See
 [`docs/data_source.md`](docs/data_source.md) for details.
 
+### Download public-domain text (optional)
+Fetch a small set of public-domain books from Project Gutenberg into `data/raw/`
+(standard library only; downloaded files are gitignored):
+
+```bash
+# all books (alice, holmes, grimm, poe)
+uv run python scripts/download_gutenberg.py --output_dir data/raw
+
+# or a subset
+uv run python scripts/download_gutenberg.py --books alice grimm
+```
+
+If a download fails, the script reports it and keeps going. You can also skip this
+step and just use the committed `data/raw/sample_corpus.txt` for smoke tests.
+
 ### Prepare the corpus
 Concatenate and clean the raw `.txt` files in `data/raw/` into a single corpus:
 

@@ -6,15 +6,42 @@ The model will ultimately be trained on **public-domain text from
 thousands of books whose copyright has expired, which makes them suitable for
 training a model from scratch without licensing concerns.
 
-The planned pipeline (not implemented yet):
-1. Download one or more public-domain works into `data/raw/`.
+The planned pipeline:
+1. Download one or more public-domain works into `data/raw/`
+   (see [`scripts/download_gutenberg.py`](../scripts/download_gutenberg.py)).
 2. Clean the text (e.g. strip the Project Gutenberg header/footer boilerplate,
-   normalize whitespace).
+   normalize whitespace) via
+   [`scripts/prepare_corpus.py`](../scripts/prepare_corpus.py).
 3. Build the character vocabulary and a train/validation split into
-   `data/processed/`.
+   `data/processed/` (not implemented yet).
 
 Only public-domain works will be used, consistent with Project Gutenberg's
 [Terms of Use](https://www.gutenberg.org/policy/permission_how_to.html).
+
+### Download helper
+`scripts/download_gutenberg.py` downloads a small, fixed list of public-domain
+plain-text books using only the Python standard library (`urllib`). The current
+registry:
+
+| Key      | Work                                          | eBook |
+|----------|-----------------------------------------------|-------|
+| `alice`  | *Alice's Adventures in Wonderland* (Carroll)  | 11    |
+| `holmes` | *The Adventures of Sherlock Holmes* (Doyle)   | 1661  |
+| `grimm`  | *Grimms' Fairy Tales* (Brothers Grimm)        | 2591  |
+| `poe`    | *The Works of Edgar Allan Poe, Vol. 1*        | 2147  |
+
+All four are in the public domain. Downloaded files land in `data/raw/` and are
+**gitignored** (only the tiny `sample_corpus.txt` is committed). If a download
+fails (e.g. no network), the script prints a helpful message and continues with the
+remaining books instead of crashing.
+
+```bash
+# all books
+uv run python scripts/download_gutenberg.py --output_dir data/raw
+
+# a subset
+uv run python scripts/download_gutenberg.py --books alice grimm
+```
 
 ## Smoke-test corpus: `sample_corpus.txt`
 `data/raw/sample_corpus.txt` is a **tiny, original, public-domain-style** text used
