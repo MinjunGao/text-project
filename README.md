@@ -84,6 +84,29 @@ sorted character vocabulary from the training text (`fit`), converts between tex
 and integer ids (`encode` / `decode`), persists to JSON (`save` / `load`), and
 maps unseen characters to an `<unk>` id.
 
+### Train the model
+Train the from-scratch Transformer using a YAML config:
+
+```bash
+uv run python -m src.train \
+    --config configs/tiny_transformer.yaml \
+    --corpus_path data/processed/corpus.txt
+```
+
+During training it logs train/val loss, writes metrics to
+`outputs/metrics/losses.csv`, checkpoints to `outputs/checkpoints/`, and generated
+samples to `outputs/samples/` (all gitignored).
+
+**Quick smoke test** (only 20 iterations, runs on the tiny sample corpus):
+
+```bash
+python -m src.train --config configs/tiny_transformer.yaml --corpus_path data/processed/corpus.txt --max_iters_override 20
+```
+
+(Prefix with `uv run` to use the project environment, and run
+`uv run python scripts/prepare_corpus.py` first if `data/processed/corpus.txt`
+does not exist yet.)
+
 ## Testing
 Run the lightweight tests with:
 
