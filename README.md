@@ -107,6 +107,17 @@ python -m src.train --config configs/tiny_transformer.yaml --corpus_path data/pr
 `uv run python scripts/prepare_corpus.py` first if `data/processed/corpus.txt`
 does not exist yet.)
 
+### Plot the loss curve
+After training, plot the train/validation loss curves from the metrics CSV:
+
+```bash
+uv run python -m src.plot_metrics \
+    --metrics_path outputs/metrics/losses.csv \
+    --output_path outputs/metrics/loss_curve.png
+```
+
+This saves a PNG to `outputs/metrics/loss_curve.png` (gitignored).
+
 ## Testing
 Run the lightweight tests with:
 
