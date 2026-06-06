@@ -133,6 +133,18 @@ The tokenizer is loaded from `tokenizer.json` next to the checkpoint by default
 (override with `--tokenizer`). `--output_path` is optional; without it the text is
 only printed. (Text quality depends on how long the model was trained.)
 
+### Chatbot GUI
+Launch the simple Streamlit chatbot to generate text interactively. Run it from
+the project root:
+
+```bash
+uv run streamlit run app/chatbot.py
+```
+
+In the app you can choose a checkpoint path, enter a prompt, and set
+`max_new_tokens`, `temperature`, and `top_k`. It shows a clear error if the
+checkpoint or tokenizer files are missing.
+
 ## Testing
 Run the lightweight tests with:
 
