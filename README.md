@@ -118,6 +118,21 @@ uv run python -m src.plot_metrics \
 
 This saves a PNG to `outputs/metrics/loss_curve.png` (gitignored).
 
+### Generate text
+Generate text from a trained checkpoint with a prompt and sampling settings:
+
+```bash
+uv run python -m src.generate \
+    --checkpoint outputs/checkpoints/ckpt.pt \
+    --prompt "The " \
+    --max_new_tokens 400 --temperature 0.8 --top_k 40 \
+    --output_path outputs/samples/generated.txt
+```
+
+The tokenizer is loaded from `tokenizer.json` next to the checkpoint by default
+(override with `--tokenizer`). `--output_path` is optional; without it the text is
+only printed. (Text quality depends on how long the model was trained.)
+
 ## Testing
 Run the lightweight tests with:
 
