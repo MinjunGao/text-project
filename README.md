@@ -97,6 +97,9 @@ During training it logs train/val loss, writes metrics to
 `outputs/metrics/losses.csv`, checkpoints to `outputs/checkpoints/`, and generated
 samples to `outputs/samples/` (all gitignored).
 
+To train on a GPU (e.g. Google Colab), see [`docs/colab.md`](docs/colab.md).
+Experiment results are recorded in [`docs/experiment_log.md`](docs/experiment_log.md).
+
 **Quick smoke test** (only 20 iterations, runs on the tiny sample corpus):
 
 ```bash

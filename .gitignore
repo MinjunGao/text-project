@@ -18,6 +18,9 @@ env/
 # OS / editor
 .DS_Store
 
+# Project archives (for uploading to Colab/Drive)
+*.zip
+
 # Model artifacts (anywhere)
 *.pt
 *.pth
